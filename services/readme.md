@@ -11,9 +11,9 @@ mvn clean package
 
 mvn clean package tomee:run
 
-This will create an executable jar file **cms.kodecamp-exec.jar** within the _target_ maven folder. This can be started by executing the following command
+This will create an executable jar file **services-exec.jar** within the _target_ maven folder. This can be started by executing the following command
 
-java -jar target/cms.kodecamp-exec.jar
+java -jar target/services-exec.jar
 
 To launch the test page, open your browser at the following URL
 
