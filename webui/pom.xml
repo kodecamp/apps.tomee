@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>in.kodecamp</groupId>
+  <artifactId>webui</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <description>Sample JEE Project</description>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <tomee.version>8.0.0</tomee.version>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>prime-repo</id>
+      <name>PrimeFaces Maven Repository</name>
+      <url>http://repository.primefaces.org</url>
+      <layout>default</layout>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+      <version>8.0</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- primefaces dependency -->
+    <dependency>
+      <groupId>org.primefaces</groupId>
+      <artifactId>primefaces</artifactId>
+      <version>6.2</version>
+      <!-- <scope>provided</scope> -->
+    </dependency>
+
+    <!-- primefaces themes -->
+    <dependency>
+      <groupId>org.primefaces.themes</groupId>
+      <artifactId>all-themes</artifactId>
+      <version>1.0.10</version>
+      <!-- <scope>provided</scope> -->
+    </dependency>
+
+  </dependencies>
+  <build>
+    <finalName>webui</finalName>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>tomee</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.tomee.maven</groupId>
+            <artifactId>tomee-maven-plugin</artifactId>
+            <version>${tomee.version}</version>
+            <executions>
+              <execution>
+                <id>executable-jar</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <context>ROOT</context>
+              <tomeeClassifier>microprofile</tomeeClassifier>
+              <tomeeHttpPort>8080</tomeeHttpPort>
+              <tomeeShutdownPort>8005</tomeeShutdownPort>
+              <tomeeAjpPort>8009</tomeeAjpPort>
+              <synchronization>
+                <extensions>
+                  <extension>.class</extension> <!--if you want to update each time you build with mvn compile -->
+                  <extension>.html</extension> <!-- if you want to update each time you build with mvn compile -->
+                  <extension>.css</extension> <!-- if you want to update each time you build with mvn compile -->
+                  <extension>.js</extension> <!-- if you want to update each time you build with mvn compile -->
+                  <extension>.xhtml</extension> <!-- if you want to update each time you build with mvn compile -->
+                </extensions>
+              </synchronization>
+              <deployOpenEjbApplication>true</deployOpenEjbApplication>
+              <systemVariables>
+                <tomee.serialization.class.whitelist />
+                <tomee.serialization.class.blacklist>-</tomee.serialization.class.blacklist>
+                <openejb.system.apps>true</openejb.system.apps>
+                <tomee.remote.support>true</tomee.remote.support>
+              </systemVariables>
+              <!-- <reloadOnUpdate>true</reloadOnUpdate> -->
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+</project>
