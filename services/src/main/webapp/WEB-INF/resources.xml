@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <tomee>
   <!-- <Resource id="jdbc/cmsDataSource" type="javax.sql.DataSource"> -->
-  <!--       JdbcDriver = org.h2.Driver -->
-  <!--       JdbcUrl = jdbc:h2:tcp:localhost/~/cms -->
-  <!--       UserName = kodecamp -->
-  <!--       Password = kodecamp -->
-  <!--       jtaManaged = true -->
+  <!-- JdbcDriver = org.h2.Driver -->
+  <!-- JdbcUrl = jdbc:h2:tcp:localhost/~/cms -->
+  <!-- UserName = kodecamp -->
+  <!-- Password = kodecamp -->
+  <!-- jtaManaged = true -->
   <!-- </Resource> -->
 
-  <Resource id="jdbc/cmsDataSource" type="javax.sql.DataSource">
+  <Resource
+      id="jdbc/cmsDataSource"
+      type="javax.sql.DataSource">
         JdbcDriver = org.h2.Driver
-        JdbcUrl = jdbc:h2:~/cms;AUTO_SERVER=TRUE
+    JdbcUrl = jdbc:h2:tcp://localhost/~/cms;
         UserName = kodecamp
         Password = kodecamp
         jtaManaged = true

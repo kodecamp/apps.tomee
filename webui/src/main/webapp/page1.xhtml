@@ -5,13 +5,18 @@
   xmlns:f="http://xmlns.jcp.org/jsf/core"
   xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
+<style>
+body {
+  background: #e1e1e1;
+}
+</style>
   <title>Session Scope Bean</title>
   <h:outputStylesheet library="css" name="bulma.min.css" />
 </h:head>
 <h:body>
 
   <h:form id="form">
-    <h1>Registration : Page 1 Updated abc</h1>
+    <h1>Registration : Page 1</h1>
     Some : <h:outputText value="#{registrationBean.someValue}"/> <br/>
     Name       : <h:outputText value="#{sampleBean.name}"/> <br/>
 

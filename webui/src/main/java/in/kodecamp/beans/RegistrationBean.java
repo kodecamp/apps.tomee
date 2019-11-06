@@ -9,14 +9,14 @@ import javax.inject.Named;
 @SessionScoped
 public class RegistrationBean implements Serializable {
 
-  private String someValue = "Some Value";
+  private String someValue = "Some Value : Updated Again ###";
 
   public RegistrationBean() {
     System.out.println("Construction : RegistrationBean");
   }
 
   public String getSomeValue() {
-    return someValue;
+    return someValue + "Updated Again ####";
   }
 
   public void setSomeValue(String someValue) {
@@ -71,6 +71,7 @@ public class RegistrationBean implements Serializable {
   public String register() {
     System.out.println("Name    : " + this.name);
     System.out.println("Address : " + this.address);
+    System.out.println("Contact : " + this.contact);
     System.out.println("Contact : " + this.contact);
     return "page1";
   }

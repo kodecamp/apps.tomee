@@ -1,6 +1,6 @@
 package in.kodecamp.cms.kodecamp;
 
-import javax.inject.Singleton;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.GET;
@@ -10,7 +10,7 @@ import javax.ws.rs.Path;
  *
  */
 @Path("/hello")
-@Singleton
+@Stateless
 public class HelloController {
 
   @PersistenceContext
@@ -18,8 +18,8 @@ public class HelloController {
 
   @GET
   public String sayHello() {
-    System.out.println("Updated 01");
+    System.out.println("Updated 01 02 03");
     System.out.println("Hello world" + em.getClass());
-    return "Hello World Updated";
+    return "Hello World";
   }
 }

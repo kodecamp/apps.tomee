@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>in.kodecamp</groupId>
   <artifactId>services</artifactId>
@@ -58,7 +61,12 @@
             </executions>
             <configuration>
               <context>ROOT</context>
-              <deployOpenEjbApplication>true</deployOpenEjbApplication>
+              <!-- <libs> -->
+              <!-- <lib> -->
+              <!-- com.h2database:h2:1.4.199 -->
+              <!-- </lib> -->
+              <!-- </libs> -->
+              <!-- <deployOpenEjbApplication>true</deployOpenEjbApplication> -->
               <tomeeClassifier>microprofile</tomeeClassifier>
               <tomeeHttpPort>8080</tomeeHttpPort>
               <tomeeShutdownPort>8005</tomeeShutdownPort>
@@ -66,10 +74,6 @@
               <synchronization>
                 <extensions>
                   <extension>.class</extension> <!-- if you want to update each time you build with mvn compile -->
-                  <extension>.html</extension> <!-- if you want to update each time you build with mvn compile -->
-                  <extension>.css</extension> <!-- if you want to update each time you build with mvn compile -->
-                  <extension>.js</extension> <!-- if you want to update each time you build with mvn compile -->
-                  <extension>.xhtml</extension> <!-- if you want to update each time you build with mvn compile -->
                 </extensions>
               </synchronization>
               <systemVariables>
@@ -78,7 +82,7 @@
                 <openejb.system.apps>true</openejb.system.apps>
                 <tomee.remote.support>true</tomee.remote.support>
               </systemVariables>
-              <!-- <reloadOnUpdate>true</reloadOnUpdate> -->
+              <reloadOnUpdate>true</reloadOnUpdate>
             </configuration>
           </plugin>
         </plugins>
