@@ -1,4 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>in.kodecamp</groupId>
   <artifactId>webui</artifactId>
@@ -74,13 +77,17 @@
             </executions>
             <configuration>
               <context>ROOT</context>
+              <webResourceCached>false</webResourceCached>
+              <args>
+                -Xmx1g -Xms1g -XXaltjvm=dcevm -javaagent:/home/peehu/DevTools/hotswap-agent.jar -XX:+UnlockDiagnosticVMOptions -XX:+EnableInvokeDynamic
+              </args>
               <tomeeClassifier>microprofile</tomeeClassifier>
               <tomeeHttpPort>8080</tomeeHttpPort>
               <tomeeShutdownPort>8005</tomeeShutdownPort>
               <tomeeAjpPort>8009</tomeeAjpPort>
               <synchronization>
                 <extensions>
-                  <extension>.class</extension> <!--if you want to update each time you build with mvn compile -->
+                  <extension>.class</extension> <!-- if you want to update each time you build with mvn compile -->
                   <extension>.html</extension> <!-- if you want to update each time you build with mvn compile -->
                   <extension>.css</extension> <!-- if you want to update each time you build with mvn compile -->
                   <extension>.js</extension> <!-- if you want to update each time you build with mvn compile -->

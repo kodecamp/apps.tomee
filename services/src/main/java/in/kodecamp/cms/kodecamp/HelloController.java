@@ -19,9 +19,7 @@ public class HelloController {
   @GET
   public String sayHello() {
     System.out.println("Updated 01");
-    System.out.println("Updated 01");
-    System.out.println("Updated 01");
     System.out.println("Hello world" + em.getClass());
-    return "Hello World";
+    return "Hello World Updated";
   }
 }

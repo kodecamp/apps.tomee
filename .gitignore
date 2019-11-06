@@ -23,17 +23,17 @@ target
 ./target
 ./settings
 
-./services/target
-./services/.distribution
-./services/.settings
-./services/.classpath
-./services/.project
+services/target
+services/.distribution
+services/.settings
+services/.classpath
+services/.project
 
-./webui/target
-./webui/.distribution
-./webui/.settings
-./webui/.classpath
-./webui/.project
+webui/target
+webui/.distribution
+webui/.settings
+webui/.classpath
+webui/.project
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
