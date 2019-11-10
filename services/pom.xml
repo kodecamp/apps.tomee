@@ -4,39 +4,75 @@
     xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>in.kodecamp</groupId>
-  <artifactId>services</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <parent>
+    <groupId>in.kodecamp</groupId>
+    <artifactId>apps-tomee</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>apps-tomee-services</artifactId>
+
   <packaging>war</packaging>
+
   <properties>
-    <final.name>services</final.name>
-    <tomee.version>8.0.0</tomee.version>
     <failOnMissingWebXml>false</failOnMissingWebXml>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <jee.version>8.0</jee.version>
+    <lib.lombok.version>1.18.10</lib.lombok.version>
+    <tomee.version>8.0.0</tomee.version>
   </properties>
+
+  <repositories>
+    <!-- eclipse link -->
+    <repository>
+      <id>oss.sonatype.org</id>
+      <name>OSS Sonatype Staging</name>
+      <url>https://oss.sonatype.org/content/groups/staging</url>
+    </repository>
+  </repositories>
+
   <dependencies>
+
     <dependency>
       <groupId>javax</groupId>
       <artifactId>javaee-api</artifactId>
       <version>8.0</version>
       <scope>provided</scope>
     </dependency>
+
     <dependency>
-      <groupId>org.eclipse.microprofile</groupId>
-      <artifactId>microprofile</artifactId>
-      <version>3.0</version>
-      <type>pom</type>
-      <scope>provided</scope>
+      <groupId>in.kodecamp</groupId>
+      <artifactId>apps-tomee-models</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <scope>compile</scope>
     </dependency>
+
+    <!-- <dependency> -->
+    <!-- <groupId>org.eclipse.microprofile</groupId> -->
+    <!-- <artifactId>microprofile</artifactId> -->
+    <!-- <type>pom</type> -->
+    <!-- <scope>provided</scope> -->
+    <!-- <version>3.0</version> -->
+    <!-- </dependency> -->
+
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
-      <version>1.4.199</version>
+      <scope>provided</scope>
+      <version>1.4.200</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.eclipse.persistence</groupId>
+      <artifactId>eclipselink</artifactId>
+      <scope>provided</scope>
+      <version>2.7.5</version>
+    </dependency>
+
   </dependencies>
   <build>
-    <finalName>${final.name}</finalName>
+    <finalName>${project.artifactId}</finalName>
   </build>
   <profiles>
     <profile>
@@ -61,11 +97,11 @@
             </executions>
             <configuration>
               <context>ROOT</context>
-              <!-- <libs> -->
-              <!-- <lib> -->
-              <!-- com.h2database:h2:1.4.199 -->
-              <!-- </lib> -->
-              <!-- </libs> -->
+              <libs>
+                <lib>in.kodecamp:apps-tomee-models:1.0-SNAPSHOT</lib>
+                <lib>com.h2database:h2:1.4.200</lib>
+                <lib>org.eclipse.persistence:eclipselink:2.7.5</lib>
+              </libs>
               <!-- <deployOpenEjbApplication>true</deployOpenEjbApplication> -->
               <tomeeClassifier>microprofile</tomeeClassifier>
               <tomeeHttpPort>8080</tomeeHttpPort>

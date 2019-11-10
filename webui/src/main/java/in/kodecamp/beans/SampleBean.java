@@ -6,11 +6,11 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class SampleBean {
-  private String name = "Sunil Kumar : SampleBean -->";
+  private String name = "Sunil Kumar";
   private String address;
 
   public SampleBean() {
-    System.out.println("# Constructor: SampleBean ####");
+    System.out.println("# Constructor: SampleBean");
   }
 
   public String getName() {
@@ -34,6 +34,7 @@ public class SampleBean {
     System.out.println("Name : " + this.name);
     System.out.println("Address : " + this.address);
     System.out.println("Address : " + this.address);
+    System.out.println("Hello World");
   }
 
   public void doSomething(final String value) {

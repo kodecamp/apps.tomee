@@ -8,26 +8,26 @@ import javax.inject.Named;
 @RequestScoped
 public class ActionResultBean {
 
-	private String result;
+  private String result;
 
-	public String getResult() {
-		return result;
-	}
+  public String getResult() {
+    return result;
+  }
 
-	public void setResult(String result) {
-		this.result = result;
-		this.onLoad();
-	}
+  public void setResult(String result) {
+    this.result = result;
+    this.onLoad();
+  }
 
-	@PostConstruct
-	public void init() {
-	 System.out.println("ActionResultBean : " + this.result);
+  @PostConstruct
+  public void init() {
+    System.out.println("ActionResultBean : " + this.result);
 
-	}
+  }
 
-	public String onLoad() {
-		System.out.println("ActionResultBean : OnLoad : Value : " + this.result);
-		return "";
-	}
+  public String onLoad() {
+    System.out.println("ActionResultBean : OnLoad : Value : " + this.result);
+    return "";
+  }
 
 }

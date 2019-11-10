@@ -12,7 +12,7 @@
       id="jdbc/cmsDataSource"
       type="javax.sql.DataSource">
         JdbcDriver = org.h2.Driver
-    JdbcUrl = jdbc:h2:tcp://localhost/~/cms;
+        JdbcUrl = jdbc:h2:tcp://localhost/~/cmsDatabase
         UserName = kodecamp
         Password = kodecamp
         jtaManaged = true

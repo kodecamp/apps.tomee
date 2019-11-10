@@ -3,11 +3,16 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>in.kodecamp</groupId>
-  <artifactId>webui</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <!-- <groupId>in.kodecamp</groupId> -->
+  <artifactId>apps-tomee-webui</artifactId>
+  <!-- <version>0.0.1-SNAPSHOT</version> -->
+  <parent>
+    <groupId>in.kodecamp</groupId>
+    <artifactId>apps-tomee</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
   <packaging>war</packaging>
-  <description>Sample JEE Project</description>
+  <description>PrimeFaces based ui</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -27,6 +32,12 @@
 
   <dependencies>
     <dependency>
+      <groupId>in.kodecamp</groupId>
+      <artifactId>apps-tomee-models</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
       <groupId>javax</groupId>
       <artifactId>javaee-api</artifactId>
       <version>8.0</version>
@@ -37,8 +48,8 @@
     <dependency>
       <groupId>org.primefaces</groupId>
       <artifactId>primefaces</artifactId>
-      <version>6.2</version>
-      <!-- <scope>provided</scope> -->
+      <version>7.0</version>
+      <scope>provided</scope>
     </dependency>
 
     <!-- primefaces themes -->
@@ -46,7 +57,7 @@
       <groupId>org.primefaces.themes</groupId>
       <artifactId>all-themes</artifactId>
       <version>1.0.10</version>
-      <!-- <scope>provided</scope> -->
+      <scope>provided</scope>
     </dependency>
 
   </dependencies>
@@ -77,10 +88,12 @@
             </executions>
             <configuration>
               <context>ROOT</context>
+              <libs>
+                <lib>in.kodecamp:apps-tomee-models:1.0-SNAPSHOT</lib>
+                <lib>org.primefaces:primefaces:7.0</lib>
+                <lib>org.primefaces.themes:all-themes:1.0.10</lib>
+              </libs>
               <webResourceCached>false</webResourceCached>
-              <args>
-                -Xmx1g -Xms1g -XXaltjvm=dcevm -javaagent:/home/peehu/DevTools/hotswap-agent.jar -XX:+UnlockDiagnosticVMOptions -XX:+EnableInvokeDynamic
-              </args>
               <tomeeClassifier>microprofile</tomeeClassifier>
               <tomeeHttpPort>8080</tomeeHttpPort>
               <tomeeShutdownPort>8005</tomeeShutdownPort>
@@ -101,7 +114,7 @@
                 <openejb.system.apps>true</openejb.system.apps>
                 <tomee.remote.support>true</tomee.remote.support>
               </systemVariables>
-              <!-- <reloadOnUpdate>true</reloadOnUpdate> -->
+              <reloadOnUpdate>true</reloadOnUpdate>
             </configuration>
           </plugin>
         </plugins>
