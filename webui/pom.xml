@@ -21,14 +21,6 @@
     <tomee.default.httpport>8081</tomee.default.httpport>
   </properties>
 
-  <!-- <repositories> -->
-  <!-- <repository> -->
-  <!-- <id>prime-repo</id> -->
-  <!-- <name>PrimeFaces Maven Repository</name> -->
-  <!-- <url>http://repository.primefaces.org</url> -->
-  <!-- <layout>default</layout> -->
-  <!-- </repository> -->
-  <!-- </repositories> -->
 
   <dependencies>
 
@@ -83,8 +75,8 @@
               <webResourceCached>false</webResourceCached>
               <tomeeClassifier>${tomee.profile}</tomeeClassifier>
               <tomeeHttpPort>${tomee.default.httpport}</tomeeHttpPort>
-              <!-- <tomeeShutdownPort>8005</tomeeShutdownPort> -->
-              <!-- <tomeeAjpPort>8009</tomeeAjpPort> -->
+              <tomeeShutdownPort>8006</tomeeShutdownPort>
+              <tomeeAjpPort>8010</tomeeAjpPort>
               <synchronization>
                 <extensions>
                   <extension>.class</extension> <!-- if you want to update each time you build with mvn compile -->

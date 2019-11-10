@@ -75,8 +75,8 @@
               <!-- <deployOpenEjbApplication>true</deployOpenEjbApplication> -->
               <tomeeClassifier>${tomee.profile}</tomeeClassifier>
               <tomeeHttpPort>${tomee.default.httpport}</tomeeHttpPort>
-              <!-- <tomeeShutdownPort>8005</tomeeShutdownPort> -->
-              <!-- <tomeeAjpPort>8009</tomeeAjpPort> -->
+              <tomeeShutdownPort>8005</tomeeShutdownPort>
+              <tomeeAjpPort>8009</tomeeAjpPort>
               <synchronization>
                 <extensions>
                   <extension>.class</extension> <!-- if you want to update each time you build with mvn compile -->
