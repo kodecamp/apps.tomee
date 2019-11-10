@@ -18,46 +18,33 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <tomee.version>8.0.0</tomee.version>
+    <tomee.default.httpport>8081</tomee.default.httpport>
   </properties>
 
-  <repositories>
-    <repository>
-      <id>prime-repo</id>
-      <name>PrimeFaces Maven Repository</name>
-      <url>http://repository.primefaces.org</url>
-      <layout>default</layout>
-    </repository>
-  </repositories>
+  <!-- <repositories> -->
+  <!-- <repository> -->
+  <!-- <id>prime-repo</id> -->
+  <!-- <name>PrimeFaces Maven Repository</name> -->
+  <!-- <url>http://repository.primefaces.org</url> -->
+  <!-- <layout>default</layout> -->
+  <!-- </repository> -->
+  <!-- </repositories> -->
 
   <dependencies>
+
     <dependency>
       <groupId>in.kodecamp</groupId>
       <artifactId>apps-tomee-models</artifactId>
-      <version>1.0-SNAPSHOT</version>
     </dependency>
 
-    <dependency>
-      <groupId>javax</groupId>
-      <artifactId>javaee-api</artifactId>
-      <version>8.0</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <!-- primefaces dependency -->
     <dependency>
       <groupId>org.primefaces</groupId>
       <artifactId>primefaces</artifactId>
-      <version>7.0</version>
-      <scope>provided</scope>
     </dependency>
 
-    <!-- primefaces themes -->
     <dependency>
       <groupId>org.primefaces.themes</groupId>
       <artifactId>all-themes</artifactId>
-      <version>1.0.10</version>
-      <scope>provided</scope>
     </dependency>
 
   </dependencies>
@@ -89,15 +76,15 @@
             <configuration>
               <context>ROOT</context>
               <libs>
-                <lib>in.kodecamp:apps-tomee-models:1.0-SNAPSHOT</lib>
-                <lib>org.primefaces:primefaces:7.0</lib>
-                <lib>org.primefaces.themes:all-themes:1.0.10</lib>
+                <lib>in.kodecamp:apps-tomee-models:${project.version}</lib>
+                <lib>org.primefaces:primefaces:${lib.primefaces.version}</lib>
+                <lib>org.primefaces.themes:all-themes:${lib.primefaces.themes.version}</lib>
               </libs>
               <webResourceCached>false</webResourceCached>
-              <tomeeClassifier>microprofile</tomeeClassifier>
-              <tomeeHttpPort>8080</tomeeHttpPort>
-              <tomeeShutdownPort>8005</tomeeShutdownPort>
-              <tomeeAjpPort>8009</tomeeAjpPort>
+              <tomeeClassifier>${tomee.profile}</tomeeClassifier>
+              <tomeeHttpPort>${tomee.default.httpport}</tomeeHttpPort>
+              <!-- <tomeeShutdownPort>8005</tomeeShutdownPort> -->
+              <!-- <tomeeAjpPort>8009</tomeeAjpPort> -->
               <synchronization>
                 <extensions>
                   <extension>.class</extension> <!-- if you want to update each time you build with mvn compile -->

@@ -14,9 +14,18 @@
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+
     <jee.version>8.0</jee.version>
+
     <lib.lombok.version>1.18.10</lib.lombok.version>
+    <lib.h2.version>1.4.200</lib.h2.version>
+    <lib.primefaces.version>7.0</lib.primefaces.version>
+    <lib.primefaces.themes.version>1.0.10</lib.primefaces.themes.version>
+    <lib.eclipselink.version>2.7.5</lib.eclipselink.version>
+
     <tomee.version>8.0.0</tomee.version>
+    <tomee.profile>microprofile</tomee.profile>
+
   </properties>
 
   <modules>
@@ -26,6 +35,14 @@
   </modules>
 
   <repositories>
+
+    <repository>
+      <id>prime-repo</id>
+      <name>PrimeFaces Maven Repository</name>
+      <url>http://repository.primefaces.org</url>
+      <layout>default</layout>
+    </repository>
+
     <repository>
       <id>projectlombok.org</id>
       <url>https://projectlombok.org/edge-releases</url>
@@ -54,11 +71,16 @@
       <scope>provided</scope>
     </dependency>
 
-
   </dependencies>
 
   <dependencyManagement>
     <dependencies>
+
+      <dependency>
+        <groupId>in.kodecamp</groupId>
+        <artifactId>apps-tomee-models</artifactId>
+        <version>${project.version}</version>
+      </dependency>
 
       <dependency>
         <groupId>org.eclipse.microprofile</groupId>
@@ -71,14 +93,14 @@
       <dependency>
         <groupId>com.h2database</groupId>
         <artifactId>h2</artifactId>
-        <version>1.4.200</version>
+        <version>${lib.h2.version}</version>
         <scope>provided</scope>
       </dependency>
 
       <dependency>
         <groupId>org.eclipse.persistence</groupId>
         <artifactId>eclipselink</artifactId>
-        <version>2.7.5</version>
+        <version>${lib.eclipselink.version}</version>
         <scope>provided</scope>
       </dependency>
 
@@ -87,6 +109,22 @@
         <artifactId>lombok</artifactId>
         <version>${lib.lombok.version}</version>
         <scope>compile</scope>
+      </dependency>
+
+      <!-- primefaces dependency -->
+      <dependency>
+        <groupId>org.primefaces</groupId>
+        <artifactId>primefaces</artifactId>
+        <version>${lib.primefaces.version}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <!-- primefaces themes -->
+      <dependency>
+        <groupId>org.primefaces.themes</groupId>
+        <artifactId>all-themes</artifactId>
+        <version>${lib.primefaces.themes.version}</version>
+        <scope>provided</scope>
       </dependency>
 
     </dependencies>
