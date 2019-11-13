@@ -25,24 +25,34 @@
 target
 ./target
 ./settings
+/.metadata
 
 services/target
 services/.settings
 services/.classpath
 services/.project
 services/.distribution
+services/.metadata
 
+rest-client/target
+rest-client/.settings
+rest-client/.classpath
+rest-client/.project
+rest-client/.distribution
+rest-client/.metadata
 
 webui/target
 webui/.settings
 webui/.classpath
 webui/.project
 webui/.distribution
+webui/.metadata
 
 models/target
 models/.settings
 models/.classpath
 models/.project
+models/.metadata
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
