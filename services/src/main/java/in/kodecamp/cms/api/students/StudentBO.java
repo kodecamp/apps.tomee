@@ -1,10 +1,11 @@
 package in.kodecamp.cms.api.students;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
 
 import in.kodecamp.models.StudentEntity;
 
@@ -28,17 +29,21 @@ public class StudentBO {
   }
 
   public List<StudentEntity> getAll() {
-    return em.createQuery("from StudentEntity se", StudentEntity.class)
+    return em.createNamedQuery("StudentEntity.findAll", StudentEntity.class)
         .getResultList();
   }
 
   public List<StudentEntity> getAllActive() {
-    return em.createQuery("from StudentEntity se", StudentEntity.class)
+    return em
+        .createNamedQuery("StudentEntity.findAllActive", StudentEntity.class)
         .getResultList();
   }
 
   public StudentEntity getBy(final long id) {
-    return em.find(StudentEntity.class, id);
+
+    return em.createNamedQuery("StudentEntity.findById", StudentEntity.class)
+        .setParameter("id", id)
+        .getSingleResult();
   }
 
   public StudentEntity createNew(final StudentEntity newStudent) {
@@ -51,9 +56,10 @@ public class StudentBO {
     return updatedEntity;
   }
 
-  public StudentEntity delete(final StudentEntity newStudent) {
-    newStudent.setActive(false);
-    StudentEntity inActivedEntity = em.merge(newStudent);
+  public StudentEntity deleteBy(final long id) {
+    StudentEntity se = this.getBy(id);
+    se.setActive(false);
+    StudentEntity inActivedEntity = em.merge(se);
     return inActivedEntity;
   }
 }

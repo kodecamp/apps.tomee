@@ -1,5 +1,7 @@
 package in.kodecamp.cms.api.students;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -10,9 +12,10 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
+
 import in.kodecamp.cms.api.commons.BaseResource;
 import in.kodecamp.models.StudentEntity;
 
@@ -24,7 +27,6 @@ import in.kodecamp.models.StudentEntity;
 @Produces(MediaType.APPLICATION_JSON)
 // this helps in converting request values into java objects
 @Consumes(MediaType.APPLICATION_JSON)
-
 public class StudentsResource extends BaseResource<StudentEntity> {
 
   /**
@@ -49,8 +51,10 @@ public class StudentsResource extends BaseResource<StudentEntity> {
   public Response getAll() {
     System.out.println(this.className + "getAll");
     List<StudentEntity> resultList = studentBo.getAll();
+    GenericEntity<List<StudentEntity>> genericEntity = new GenericEntity<List<StudentEntity>>(
+        resultList, List.class);
     System.out.println("result list : " + resultList);
-    return Response.ok(studentBo.getAll()).build();
+    return Response.ok(genericEntity).build();
   }
 
   @GET
@@ -63,8 +67,10 @@ public class StudentsResource extends BaseResource<StudentEntity> {
 
   @PUT
   @Path("/{id}")
-  public Response update(@PathParam("id") long id, final StudentEntity requestObj) {
-    System.out.println(this.className + "update at id : " + id + " with -> " + requestObj);
+  public Response update(@PathParam("id") long id,
+      final StudentEntity requestObj) {
+    System.out.println(
+        this.className + "update at id : " + id + " with -> " + requestObj);
     return null;
   }
 
@@ -76,10 +82,11 @@ public class StudentsResource extends BaseResource<StudentEntity> {
 
   @DELETE
   @Path("/{id}")
-  public Response deleteBy(@PathParam("id") final String id) {
+  public Response deleteBy(@PathParam("id") final long id) {
     System.out.println("Hello");
     System.out.println(this.className + "deleteBy(id) -> " + id);
-    return null;
+    StudentEntity se = this.studentBo.deleteBy(id);
+    return Response.ok(se).build();
   }
 
 }
