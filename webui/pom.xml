@@ -1,7 +1,6 @@
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <artifactId>apps-tomee-webui</artifactId>
   <parent>
@@ -26,17 +25,32 @@
       <groupId>in.kodecamp</groupId>
       <artifactId>apps-tomee-models</artifactId>
     </dependency>
+    
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <scope>provided</scope>
+    </dependency>
 
     <dependency>
       <groupId>org.primefaces</groupId>
       <artifactId>primefaces</artifactId>
+      <scope>provided</scope>
     </dependency>
+
 
     <dependency>
       <groupId>org.primefaces.themes</groupId>
       <artifactId>all-themes</artifactId>
+      <scope>provided</scope>
     </dependency>
 
+    <dependency>
+      <groupId>org.glassfish.soteria</groupId>
+      <artifactId>javax.security.enterprise</artifactId>
+      <version>1.0</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
   <build>
     <finalName>webui</finalName>
@@ -64,11 +78,16 @@
               </execution>
             </executions>
             <configuration>
-              <context>ROOT</context>
+              <!-- <context>ROOT</context> -->
+              <!-- <context>webui</context> -->
+              <serverXml>xyz</serverXml>
+              <args>-Xmx256m -XX:PermSize=128m</args>
               <libs>
                 <lib>in.kodecamp:apps-tomee-models:${project.version}</lib>
                 <lib>org.primefaces:primefaces:${lib.primefaces.version}</lib>
                 <lib>org.primefaces.themes:all-themes:${lib.primefaces.themes.version}</lib>
+                <lib>com.h2database:h2:${lib.h2.version}</lib>
+                <lib>org.glassfish.soteria:javax.security.enterprise:1.0</lib>
               </libs>
               <webResourceCached>false</webResourceCached>
               <tomeeClassifier>${tomee.profile}</tomeeClassifier>

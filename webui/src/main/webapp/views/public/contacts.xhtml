@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+    <h:head>
+      <title>Student Management Console</title>
+    </h:head>
+    <h:body>
+        <p:outputLabel>Contact Page</p:outputLabel>
+ 
+        <p>This is the public page and any one can access it</p>
+ 
+        <h:form>
+            <p:commandButton value="Logout" action="#{logoutBean.submit}"/>
+        </h:form>
+    </h:body>
+</f:view>
+</html>

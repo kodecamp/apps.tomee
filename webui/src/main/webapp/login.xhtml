@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<f:view>
+  <h:head>
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+body {
+	display: flex;
+	flex-direction: column;
+	background: #f1f1f1;
+	/* justify-content: center; */
+    align-items: center;
+    height: 100vh;
+}
+
+h3 {
+	text-align: center;
+}
+
+div.container{
+	width: 30%;
+	border: 2px solid #161616;
+    background: #252931;
+    padding: 32px;
+}
+
+input[type=text],input[type=password] {
+  padding: 8px;
+  margin-bottom: 8px;
+  background: #101010;
+  color: #f1f1f1;
+  border: 1px solid #000;
+
+}
+.button-panel {
+  display: flex;
+  flex-direction: row;
+}
+button {
+  width: calc(50% - 4px);
+  padding: 8px;
+  margin: 8px 4px;
+  background: #161616;
+  color: #eee;
+  border: 1px solid #000;
+  border-radius: 5px;
+  font-weight: bold;
+  
+}
+
+.container .form-controls {
+	display: flex;
+    flex-direction: column;
+}
+</style>
+  </h:head>
+  <h:body>
+  <br/> <br/> <br/> <br/>
+    <h3>Login</h3>
+    <hr />
+    <div class="container">
+      <form action="j_security_check">
+        <div class="form-controls">
+          <input type="text" id="j_username" name="j_username" placeholder="Enter Username"/> 
+
+          <input type="password" id="j_password" name="j_password" placeholder="Enter password"/>
+
+          <div class="button-panel">
+            <button type="submit">Login</button>
+            <button type="reset">Reset</button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </h:body>
+</f:view>
+</html>

@@ -25,7 +25,7 @@
     <lib.eclipselink.version>2.7.5</lib.eclipselink.version>
 
     <tomee.version>8.0.0</tomee.version>
-    <tomee.profile>microprofile</tomee.profile>
+    <tomee.profile>plume</tomee.profile>
 
   </properties>
 

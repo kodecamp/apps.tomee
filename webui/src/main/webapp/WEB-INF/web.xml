@@ -4,11 +4,27 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
 
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>SECURED PAGES</web-resource-name>
+			<url-pattern>/views/secured/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+			<role-name>user</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-role>
+		<role-name>user</role-name>
+	</security-role>
+	<security-role>
+		<role-name>admin</role-name>
+	</security-role>
+
 	<!-- PRIME FACES OPTIMIZATION -->
-	<!-- <context-param>
-		<param-name>org.primefaces.extensions.DELIVER_UNCOMPRESSED_RESOURCES</param-name>
-		<param-value>false</param-value>
-	</context-param> -->
+	<!-- <context-param> <param-name>org.primefaces.extensions.DELIVER_UNCOMPRESSED_RESOURCES</param-name> 
+		<param-value>false</param-value> </context-param> -->
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
 		<param-value>bootstrap</param-value>
@@ -47,4 +63,13 @@
 	<welcome-file-list>
 		<welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>
+
+    <login-config>
+      <auth-method>FORM</auth-method>
+      <form-login-config>
+        <form-login-page>/login.xhtml</form-login-page>
+        <form-error-page>/error.xhtml</form-error-page>
+      </form-login-config>
+    </login-config>
+
 </web-app>
