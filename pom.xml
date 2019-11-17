@@ -32,6 +32,7 @@
   <modules>
     <module>models</module>
     <module>services</module>
+    <module>login</module>
     <module>webui</module>
     <module>rest-client</module>
   </modules>

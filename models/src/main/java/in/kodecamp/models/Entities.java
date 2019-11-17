@@ -18,6 +18,7 @@ public final class Entities<T> {
 
   public Collection<T> getItems() {
     return Collections.unmodifiableCollection(this.items);
+
   }
 
   public void setItems(final Collection<T> newItems) {

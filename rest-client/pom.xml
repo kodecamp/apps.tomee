@@ -9,8 +9,8 @@
 		<artifactId>apps-tomee</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>rest-client</artifactId>
-	<name>rest-client</name>
+	<artifactId>apps-tomee-rest-client</artifactId>
+	<name>apps-tomee-rest-client</name>
 
 	<url>http://maven.apache.org</url>
 
@@ -61,7 +61,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>rest-client</finalName>
+		<finalName>${project.artifactId}</finalName>
 	</build>
 
 </project>

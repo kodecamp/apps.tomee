@@ -34,6 +34,13 @@ services/.project
 services/.distribution
 services/.metadata
 
+login/target
+login/.settings
+login/.classpath
+login/.project
+login/.distribution
+login/.metadata
+
 rest-client/target
 rest-client/.settings
 rest-client/.classpath
