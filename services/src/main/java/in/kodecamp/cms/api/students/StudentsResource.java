@@ -51,8 +51,7 @@ public class StudentsResource extends BaseResource<StudentEntity> {
   public Response getAll() {
     System.out.println(this.className + "getAll");
     List<StudentEntity> resultList = studentBo.getAll();
-    GenericEntity<List<StudentEntity>> genericEntity = new GenericEntity<List<StudentEntity>>(
-        resultList, List.class);
+    GenericEntity<List<StudentEntity>> genericEntity = new GenericEntity<List<StudentEntity>>(resultList, List.class);
     System.out.println("result list : " + resultList);
     return Response.ok(genericEntity).build();
   }
@@ -67,10 +66,8 @@ public class StudentsResource extends BaseResource<StudentEntity> {
 
   @PUT
   @Path("/{id}")
-  public Response update(@PathParam("id") long id,
-      final StudentEntity requestObj) {
-    System.out.println(
-        this.className + "update at id : " + id + " with -> " + requestObj);
+  public Response update(@PathParam("id") long id, final StudentEntity requestObj) {
+    System.out.println(this.className + "update at id : " + id + " with -> " + requestObj);
     return null;
   }
 

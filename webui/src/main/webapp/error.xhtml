@@ -1,29 +1,66 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
   xmlns:h="http://xmlns.jcp.org/jsf/html"
-  xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+  xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+>
 <f:view>
   <h:head>
-    <h:outputStylesheet>
-            h3 {
-                text-align: center;
-            }
-        </h:outputStylesheet>
+    <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: #f1f1f1;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.container {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.error {
+  color: crimson;
+}
+
+.error-text {
+  color: tomato;
+}
+
+.heading {
+  font-size: 2rem;
+  padding: 16px 0;
+  color: #252931;
+}
+
+a {
+  color: darkgreen;
+  font-weight: normal;
+  text-decoration: none;
+  padding: 16px;
+}
+
+a:hover {
+  color: lightgreen;
+}
+</style>
   </h:head>
   <h:body>
-    <p:outputPanel>
-      <div class="ui-g">
-        <div class="ui-g-4" />
-        <div class="ui-g-4">
-          <h3>Login</h3>
+    <div class="container">
+      <h3 class="heading error">Error Page</h3>
+      <hr />
 
-          <h:form id="error">
-            <p:messages id="messages" globalOnly="true" />
-               <h:link outcome="/login" value="Go To Login Page"/>
-          </h:form>
-        </div>
-      </div>
-    </p:outputPanel>
+      <h:outputText styleClass="error-text" value="Username or Password is wrong. Please login again."></h:outputText>
+      <h:link outcome="/login" value="Login Again" style="text-align: center;"/>
+    </div>
   </h:body>
 </f:view>
 </html>

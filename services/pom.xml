@@ -42,7 +42,7 @@
   </dependencies>
 
   <build>
-    <finalName>${project.artifactId}</finalName>
+    <finalName>services</finalName>
   </build>
   <profiles>
     <profile>
@@ -66,7 +66,8 @@
               </execution>
             </executions>
             <configuration>
-              <context>ROOT</context>
+              <context>services</context>
+              <args>-Xmx128m -XX:MaxMetaspaceSize=64m</args>
               <libs>
                 <lib>in.kodecamp:apps-tomee-models:${project.version}</lib>
                 <lib>com.h2database:h2:${lib.h2.version}</lib>
@@ -88,7 +89,7 @@
                 <openejb.system.apps>true</openejb.system.apps>
                 <tomee.remote.support>true</tomee.remote.support>
               </systemVariables>
-              <reloadOnUpdate>true</reloadOnUpdate>
+              <!-- <reloadOnUpdate>true</reloadOnUpdate> -->
             </configuration>
           </plugin>
         </plugins>

@@ -16,6 +16,6 @@ create table user_roles (
 
 insert into users values ('kodecamp','kodecamp');
 insert into users values ('kcamp','kcamp');
-                 
+
 insert into user_roles values ('kodecamp','ADMIN');
 insert into user_roles values ('kcamp','USER');

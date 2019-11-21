@@ -23,9 +23,9 @@
     <lib.primefaces.version>7.0</lib.primefaces.version>
     <lib.primefaces.themes.version>1.0.10</lib.primefaces.themes.version>
     <lib.eclipselink.version>2.7.5</lib.eclipselink.version>
-
     <tomee.version>8.0.0</tomee.version>
-    <tomee.profile>plume</tomee.profile>
+    <tomee.profile>microprofile</tomee.profile>
+
 
   </properties>
 
@@ -80,7 +80,7 @@
 
   <dependencyManagement>
     <dependencies>
-      <!-- apps-tomee-modells -->
+      <!-- apps-tomee-models -->
       <dependency>
         <groupId>in.kodecamp</groupId>
         <artifactId>apps-tomee-models</artifactId>
