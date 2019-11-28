@@ -35,6 +35,7 @@
     <module>login</module>
     <module>webui</module>
     <module>rest-client</module>
+    <module>dtos</module>
   </modules>
 
   <repositories>

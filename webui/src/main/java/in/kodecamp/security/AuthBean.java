@@ -8,7 +8,6 @@ import java.util.Map;
 
 import javax.enterprise.context.ApplicationScoped;
 
-
 // this class will be utilized by the Lazy realm for checking the user and password
 // sent to this by the accessed resource
 @ApplicationScoped
@@ -27,23 +26,18 @@ public class AuthBean {
   }
 
   public Principal authenticate(final String username, String password) {
-    System.out.println("########### AuthBean : authenticate : username : "
-        + username + " Password : " + password);
-    
+    System.out.println("########### AuthBean : authenticate : username : " + username + " Password : " + password);
+
     final String storedPwd = userCredentials.get(username);
-    Principal principal = password.equals(storedPwd)
-        ? createNewPrincipal(username)
-        : null;
+    Principal principal = password.equals(storedPwd) ? createNewPrincipal(username) : null;
     System.out.println(" User has been verified : " + principal);
     return principal;
-   
+
   }
 
   public boolean hasRole(final Principal principal, final String role) {
-    final boolean isRoleFound = userRoles.get(principal.getName())
-        .contains(role);
-    System.out.println(
-        String.format("%s has role %s : %b", principal, role, isRoleFound));
+    final boolean isRoleFound = userRoles.get(principal.getName()).contains(role);
+    System.out.println(String.format("%s has role %s : %b", principal, role, isRoleFound));
     return isRoleFound;
   }
 
