@@ -24,10 +24,20 @@
 
 
   <dependencies>
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
 
     <dependency>
       <groupId>in.kodecamp</groupId>
       <artifactId>apps-tomee-models</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>in.kodecamp</groupId>
+      <artifactId>apps-tomee-dtos</artifactId>
     </dependency>
 
     <dependency>
@@ -40,6 +50,7 @@
       <artifactId>eclipselink</artifactId>
     </dependency>
   </dependencies>
+
 
   <build>
     <finalName>services</finalName>
@@ -89,7 +100,7 @@
                 <openejb.system.apps>true</openejb.system.apps>
                 <tomee.remote.support>true</tomee.remote.support>
               </systemVariables>
-              <!-- <reloadOnUpdate>true</reloadOnUpdate> -->
+              <reloadOnUpdate>true</reloadOnUpdate>
             </configuration>
           </plugin>
         </plugins>

@@ -26,6 +26,16 @@
   <dependencies>
 
     <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>in.kodecamp</groupId>
+      <artifactId>apps-tomee-models</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>in.kodecamp</groupId>
       <artifactId>apps-tomee-models</artifactId>
     </dependency>

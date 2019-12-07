@@ -9,10 +9,14 @@ import javax.ws.rs.core.Response;
 public class BaseResource<T> {
 
   protected Response buildResponse(T entity) {
-    return Objects.nonNull(entity) ? Response.ok(entity)
-        .build()
-        : Response.noContent()
-            .build();
+    return Objects.nonNull(entity) ? Response.ok(entity).build() : Response.noContent().build();
+  }
+
+  protected boolean isResponseOK(Response response) {
+    if (response.getStatusInfo().getStatusCode() == Response.Status.OK.getStatusCode()) {
+      return true;
+    }
+    return false;
   }
 
 }

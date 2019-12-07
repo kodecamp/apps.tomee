@@ -25,7 +25,7 @@ import lombok.EqualsAndHashCode;
 // version
 // will be called
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class StudentEntity extends BaseEntity {
+public class StudentEntity extends BaseEntity<StudentEntity> {
 
   @Column(name = "NAME")
   private String name;
@@ -40,6 +40,13 @@ public class StudentEntity extends BaseEntity {
   public StudentEntity(final String name, final String address) {
     this.name = name;
     this.address = address;
+  }
+
+  @Override
+  public StudentEntity syncFrom(StudentEntity from) {
+    this.name = from.name;
+    this.address = from.address;
+    return this;
   }
 
 }

@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public class BaseEntity implements Serializable {
+public abstract class BaseEntity<T> implements Serializable {
 
   // protected default constructor
 
@@ -57,5 +57,7 @@ public class BaseEntity implements Serializable {
   public void beforeUpdate() {
     this.modifiedOn = LocalDateTime.now();
   }
+
+  protected abstract T syncFrom(T from);
 
 }

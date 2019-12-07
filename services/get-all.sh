@@ -1,3 +1,3 @@
 #! /bin/bash
 
-curl --request GET http://localhost:8080/api/students | json_pp
+curl --request GET http://localhost:8080/services/api/students | json_pp

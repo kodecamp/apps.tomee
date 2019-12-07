@@ -68,6 +68,13 @@ public class StudentsResource extends BaseResource<StudentEntity> {
   @Path("/{id}")
   public Response update(@PathParam("id") long id, final StudentEntity requestObj) {
     System.out.println(this.className + "update at id : " + id + " with -> " + requestObj);
+    Response response = this.getBy(id);
+    if (isResponseOK(response)) {
+      StudentEntity studentEntity = (StudentEntity) response.getEntity();
+      StudentEntity syncedEntity = studentEntity.syncFrom(requestObj);
+      this.studentBo.update(syncedEntity);
+
+    }
     return null;
   }
 
