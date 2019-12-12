@@ -35,10 +35,10 @@
       <artifactId>apps-tomee-models</artifactId>
     </dependency>
 
-    <dependency>
-      <groupId>in.kodecamp</groupId>
-      <artifactId>apps-tomee-dtos</artifactId>
-    </dependency>
+    <!-- <dependency> -->
+      <!-- <groupId>in.kodecamp</groupId> -->
+      <!-- <artifactId>apps-tomee-dtos</artifactId> -->
+    <!-- </dependency> -->
 
     <dependency>
       <groupId>com.h2database</groupId>
@@ -81,6 +81,7 @@
               <args>-Xmx128m -XX:MaxMetaspaceSize=64m</args>
               <libs>
                 <lib>in.kodecamp:apps-tomee-models:${project.version}</lib>
+                <!-- <lib>in.kodecamp:apps-tomee-dtos:${project.version}</lib> -->
                 <lib>com.h2database:h2:${lib.h2.version}</lib>
                 <lib>org.eclipse.persistence:eclipselink:${lib.eclipselink.version}</lib>
               </libs>

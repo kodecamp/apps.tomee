@@ -16,13 +16,20 @@ public class StudentDto extends BaseDto {
 
   private String address;
 
-  public StudentDto() {
+  public StudentDto(final long id, final String name, final String address) {
+    this(id);
+    this.name = name;
+    this.address = address;
   }
 
-  // this will be used by the api to create new students
   public StudentDto(final String name, final String address) {
     this.name = name;
     this.address = address;
+  }
+
+  // this will be used by the api to create new students
+  public StudentDto(final long id) {
+    super(id);
   }
 
 }

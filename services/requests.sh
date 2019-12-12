@@ -8,14 +8,14 @@ get_all() {
   echo "#################### get_all ####################"
   echo "hitting url : $url"
   echo "#################### ####### ###################"
-  curl --request GET $url | json_pp
+  curl --request GET $url > get_all.json
 }
 
 get_by_id() {
   echo "#################### get_by_id ####################"
   echo "hitting url : $url/$1"
   echo "#################### ####### ####################"
-  curl --request GET $url/$1 | json_pp
+  curl --request GET $url/$1
 }
 
 DeleteById() {
@@ -96,6 +96,7 @@ case  $1  in
          ;;
        *)
 esac
+
 
 
 

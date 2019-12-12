@@ -28,4 +28,8 @@ public abstract class BaseDto implements Serializable {
 
   protected LocalDateTime modifiedOn;
 
+  protected BaseDto(final long id) {
+    this.id = id;
+  }
+
 }
