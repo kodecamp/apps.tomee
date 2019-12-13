@@ -1,4 +1,4 @@
-package in.kodecamp.cms.api.commons;
+package in.kodecamp.core.resources;
 
 import javax.ws.rs.core.UriInfo;
 import java.util.Collection;

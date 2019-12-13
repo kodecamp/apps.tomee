@@ -8,6 +8,6 @@ import javax.ws.rs.core.Application;
  *
  */
 @ApplicationPath("/api")
-public class CmsApplication extends Application {
+public class LoginApplication extends Application {
 }
 

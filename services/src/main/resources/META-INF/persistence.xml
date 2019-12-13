@@ -12,14 +12,14 @@
     <jta-data-source>java:openejb/Resource/cmsDataSource</jta-data-source>
     <!-- <non-jta-data-source>java:openejb/Resource/collegeDsUnManaged</non-jta-data-source> -->
 
-    <class>in.kodecamp.models.StudentEntity</class>
+    <class>in.kodecamp.cms.api.students.StudentEntity</class>
 
     <properties>
       <!-- EclipseLink should create the database schema automatically -->
 <!--       <property
           name="eclipselink.ddl-generation"
           value="create-tables" />
- -->      
+ -->
       <property
           name="eclipselink.ddl-generation.output-mode"
           value="database" />

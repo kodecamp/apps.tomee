@@ -1,4 +1,4 @@
-package in.kodecamp.cms.api.commons;
+package in.kodecamp.core.resources;
 
 /**
  * Link
@@ -6,14 +6,14 @@ package in.kodecamp.cms.api.commons;
 import javax.ws.rs.core.UriInfo;
 import java.util.LinkedHashMap;
 
-import in.kodecamp.models.BaseEntity;
+import in.kodecamp.core.entities.BaseEntity;
 
 public class Link extends LinkedHashMap<String, Object> {
 
   public static final String PATH_SEPARATOR = "/";
 
-  public static final String STUDENTS = PATH_SEPARATOR + "students";
-  public static final String USERS = PATH_SEPARATOR + "users";
+  /* public static final String STUDENTS = PATH_SEPARATOR + "students"; */
+  /* public static final String USERS = PATH_SEPARATOR + "users"; */
 
   public Link(UriInfo info, BaseEntity entity) {
     this(getFullyQualifiedContextPath(info), entity);
@@ -43,8 +43,8 @@ public class Link extends LinkedHashMap<String, Object> {
 
   protected String createHref(String fqBasePath, BaseEntity entity) {
     StringBuilder sb = new StringBuilder(fqBasePath);
-    ResourcePath path = ResourcePath.forClass(entity.getClass());
-    sb.append(path.getPath()).append(PATH_SEPARATOR).append(entity.getId());
+    String path = ResourcePath.getPath(entity.getClass().getName());
+    sb.append(path).append(PATH_SEPARATOR).append(entity.getId());
     return sb.toString();
   }
 

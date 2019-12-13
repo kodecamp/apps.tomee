@@ -1,4 +1,4 @@
-package in.kodecamp.cms.api.commons;
+package in.kodecamp.core.exceptions;
 
 public class UnknownResourceException extends RuntimeException {
 

@@ -1,12 +1,17 @@
 
-drop table user_roles if exists;
+-- USER TABLE
 drop table users if exists;
-
 create table users (
   user_name         varchar(15) not null primary key,
   user_pass         varchar(15) not null
 );
 
+insert into users values ('kodecamp','kodecamp');
+insert into users values ('kcamp','kcamp');
+---------------------------------------------------------
+
+-- USER_ROLES TABLE
+drop table user_roles if exists;
 create table user_roles (
   user_name         varchar(15) not null,
   role_name         varchar(15) not null,
@@ -14,13 +19,22 @@ create table user_roles (
   foreign key (user_name) references users(user_name)
 );
 
-insert into users values ('kodecamp','kodecamp');
-insert into users values ('kcamp','kcamp');
-                 
 insert into user_roles values ('kodecamp','ADMIN');
 insert into user_roles values ('kcamp','USER');
 
-insert into students (id, name, address) values (1, 'Sunil', 'Naini'); 
-insert into students (id, name, address) values (2, 'Sushil', 'Lucknow'); 
-insert into students (id, name, address) values (3, 'Dinesh', 'Mumbai'); 
-insert into students (id, name, address) values (4, 'Sharad', 'Indore'); 
+---------------------------------------------------------
+
+-- USER_TOKEN TABLE
+drop table user_tokens if exists;
+create table user_tokens(
+  user_name         varchar(15) not null,
+  token varchar(1024) not null,
+  primary key (user_name),
+  foreign key (user_name) references users(user_name)
+);
+
+---------------------------------------------------------
+
+
+
+

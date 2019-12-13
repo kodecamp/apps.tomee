@@ -27,6 +27,7 @@
   <modules>
     <module>dtos</module>
     <module>models</module>
+    <module>core</module>
     <module>services</module>
     <module>login</module>
     <module>webui</module>
@@ -86,6 +87,14 @@
         <scope>provided</scope>
       </dependency>
 
+      <!--core for creating services-->
+      <dependency>
+        <groupId>in.kodecamp</groupId>
+        <artifactId>apps-tomee-core</artifactId>
+        <version>${project.version}</version>
+        <scope>provided</scope>
+      </dependency>
+
       <!-- apps-tomee-models -->
       <dependency>
         <groupId>in.kodecamp</groupId>
@@ -140,6 +149,12 @@
         <version>${lib.primefaces.themes.version}</version>
         <scope>provided</scope>
       </dependency>
+
+    <dependency>
+      <groupId>com.auth0</groupId>
+      <artifactId>java-jwt</artifactId>
+      <version>3.3.0</version>
+    </dependency>
     </dependencies>
   </dependencyManagement>
 </project>

@@ -7,7 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import in.kodecamp.models.StudentEntity;
+import in.kodecamp.cms.api.students.StudentEntity;
 
 /**
  * StudentBO
@@ -29,21 +29,16 @@ public class StudentBO {
   }
 
   public List<StudentEntity> getAll() {
-    return em.createNamedQuery("StudentEntity.findAll", StudentEntity.class)
-        .getResultList();
+    return em.createNamedQuery("StudentEntity.findAll", StudentEntity.class).getResultList();
   }
 
   public List<StudentEntity> getAllActive() {
-    return em
-        .createNamedQuery("StudentEntity.findAllActive", StudentEntity.class)
-        .getResultList();
+    return em.createNamedQuery("StudentEntity.findAllActive", StudentEntity.class).getResultList();
   }
 
   public StudentEntity getBy(final long id) {
 
-    return em.createNamedQuery("StudentEntity.findById", StudentEntity.class)
-        .setParameter("id", id)
-        .getSingleResult();
+    return em.createNamedQuery("StudentEntity.findById", StudentEntity.class).setParameter("id", id).getSingleResult();
   }
 
   public StudentEntity createNew(final StudentEntity newStudent) {

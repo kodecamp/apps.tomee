@@ -5,11 +5,11 @@
     version="2.0"
     xmlns="http://java.sun.com/xml/ns/persistence">
   <persistence-unit
-      name="cmsPersistenceUnit"
+      name="userPersistenceUnit"
       transaction-type="JTA">
 
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <jta-data-source>java:openejb/Resource/cmsDataSource</jta-data-source>
+    <jta-data-source>java:openejb/Resource/userDataSource</jta-data-source>
     <!-- <non-jta-data-source>java:openejb/Resource/collegeDsUnManaged</non-jta-data-source> -->
 
     <class>in.kodecamp.models.StudentEntity</class>
@@ -19,7 +19,7 @@
 <!--       <property
           name="eclipselink.ddl-generation"
           value="create-tables" />
- -->      
+ -->
       <property
           name="eclipselink.ddl-generation.output-mode"
           value="database" />

@@ -9,10 +9,10 @@
   <!-- </Resource> -->
 
   <Resource
-      id="jdbc/cmsDataSource"
+      id="jdbc/userDataSource"
       type="javax.sql.DataSource">
         JdbcDriver = org.h2.Driver
-        JdbcUrl = jdbc:h2:tcp://localhost/~/cmsDatabase
+        JdbcUrl = jdbc:h2:tcp://localhost:9091/~/DevTools/Databases/UserDatabase
         UserName = kodecamp
         Password = kodecamp
         jtaManaged = true

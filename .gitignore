@@ -35,6 +35,13 @@ services/.project
 services/.distribution
 services/.metadata
 
+core/target
+core/.settings
+core/.classpath
+core/.project
+core/.distribution
+core/.metadata
+
 login/target
 login/.settings
 login/.classpath

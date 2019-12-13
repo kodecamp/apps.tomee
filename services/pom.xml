@@ -24,6 +24,7 @@
 
 
   <dependencies>
+
     <dependency>
       <groupId>javax</groupId>
       <artifactId>javaee-api</artifactId>
@@ -31,8 +32,19 @@
     </dependency>
 
     <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>in.kodecamp</groupId>
-      <artifactId>apps-tomee-models</artifactId>
+      <artifactId>apps-tomee-core</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.projectlombok</groupId>
+          <artifactId>lombok</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <!-- <dependency> -->
@@ -49,6 +61,12 @@
       <groupId>org.eclipse.persistence</groupId>
       <artifactId>eclipselink</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>com.auth0</groupId>
+      <artifactId>java-jwt</artifactId>
+    </dependency>
+
   </dependencies>
 
 
@@ -80,7 +98,8 @@
               <context>services</context>
               <args>-Xmx128m -XX:MaxMetaspaceSize=64m</args>
               <libs>
-                <lib>in.kodecamp:apps-tomee-models:${project.version}</lib>
+                <lib>in.kodecamp:apps-tomee-core:${project.version}</lib>
+                <lib>org.projectlombok:lombok:${lib.lombok.version}</lib>
                 <!-- <lib>in.kodecamp:apps-tomee-dtos:${project.version}</lib> -->
                 <lib>com.h2database:h2:${lib.h2.version}</lib>
                 <lib>org.eclipse.persistence:eclipselink:${lib.eclipselink.version}</lib>

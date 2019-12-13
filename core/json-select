@@ -1,0 +1,4 @@
+#!/bin/bash
+
+command jq '.students[]|join("/")' $1 | dmenu -l 15 -i -nb '#282828' -nf '#fea63c' -sb '#fea63c' -sf '#282828' -fn 'Hack-16:normal:pixelsize=18' -p ' λ : '
+

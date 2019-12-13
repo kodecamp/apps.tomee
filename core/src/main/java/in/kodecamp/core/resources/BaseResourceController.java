@@ -1,4 +1,4 @@
-package in.kodecamp.cms.api.commons;
+package in.kodecamp.core.resources;
 
 import java.net.URI;
 import java.util.Collection;
@@ -9,7 +9,7 @@ import java.util.Collections;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import in.kodecamp.models.BaseEntity;
+import in.kodecamp.core.entities.BaseEntity;
 
 /**
  * BaseResource

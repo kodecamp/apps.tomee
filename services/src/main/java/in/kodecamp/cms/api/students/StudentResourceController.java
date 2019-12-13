@@ -20,23 +20,23 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import in.kodecamp.cms.api.commons.Link;
-import in.kodecamp.models.BaseEntity;
-import in.kodecamp.models.StudentEntity;
+import in.kodecamp.core.resources.Link;
+import in.kodecamp.core.resources.BaseResourceController;
+import in.kodecamp.core.resources.CollectionResource;
+import in.kodecamp.core.exceptions.UnknownResourceException;
+import in.kodecamp.core.entities.BaseEntity;
 
-import in.kodecamp.cms.api.commons.BaseResourceController;
-import in.kodecamp.cms.api.commons.CollectionResource;
-import in.kodecamp.cms.api.commons.UnknownResourceException;
+import in.kodecamp.cms.api.commons.PathConstants;
+import in.kodecamp.cms.api.students.StudentEntity;
 
 /**
  * StudentsResource
  */
-@Path(Link.STUDENTS)
+@Path(PathConstants.PATH_STUDENTS)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class StudentResourceController extends BaseResourceController<StudentResource> {
@@ -67,7 +67,7 @@ public class StudentResourceController extends BaseResourceController<StudentRes
 
     System.out.println("isExpanded : " + isExpanded + ", offset: " + offset + ", size: " + size);
     List<StudentEntity> resultList = studentBo.getAllActive();
-    return super.createCollectionResource(info, Link.STUDENTS, resultList, isExpanded);
+    return super.createCollectionResource(info, PathConstants.PATH_STUDENTS, resultList, isExpanded);
   }
 
   @GET
