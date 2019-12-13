@@ -10,6 +10,7 @@ import java.io.*;
 public final class ResourcePath {
 
   // ResourcePath(Link.STUDENTS, StudentEntity.class);
+  private static final String DEFAULT_MAPPING_FILE="entitypath-mappings";
   private static  Map<String,String> entityPathMap = new HashMap<>();
 
   static {
@@ -17,22 +18,20 @@ public final class ResourcePath {
   }
 
   private static void loadPathMappings() {
-    System.out.println("####################### loadPathMappings ######################");
+    System.out.println("####################### Loaded Path Mappings ######################");
     Properties props = new Properties();
     ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
     try {
-      InputStream in = classLoader.getResourceAsStream("/entitypath-mappings.properties");
+      InputStream in = classLoader.getResourceAsStream("/"+DEFAULT_MAPPING_FILE+".properties");
       props.load(in);
       Enumeration e = props.propertyNames();
 
-      System.out.println("=============================================================");
       while (e.hasMoreElements()) {
         String key = String.valueOf(e.nextElement());
         String value = String.valueOf(props.getProperty(key));
         System.out.println(key + " ::  " + value);
         entityPathMap.put(key,value);
       }
-      System.out.println("=============================================================");
       in.close();
     } catch(IOException ioException) {
       System.out.println("################## Unable to load entitypath-mappings ################");
@@ -60,11 +59,12 @@ public final class ResourcePath {
   // }
 
   public static String getPath(final String entityName) {
-    System.out.println("##################### Path for "+ entityName +" #################");
     String path = entityPathMap.get(entityName);
-    System.out.println("############################ Path : " + path + "################");
+    System.out.println("### Mapped Path Entity : " + entityName + ", Path : "+ path);
     return path;
   }
+
+
 
   // public Class<? extends BaseEntity> getAssociatedClass() {
     // return associatedClass;
