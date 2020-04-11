@@ -31,24 +31,36 @@
     </dependency>
 
     <dependency>
-      <groupId>in.kodecamp</groupId>
-      <artifactId>apps-tomee-models</artifactId>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
     </dependency>
 
     <dependency>
       <groupId>in.kodecamp</groupId>
-      <artifactId>apps-tomee-models</artifactId>
+      <artifactId>apps-tomee-core</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.projectlombok</groupId>
+          <artifactId>lombok</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt-api</artifactId>
     </dependency>
 
     <dependency>
-      <groupId>org.eclipse.persistence</groupId>
-      <artifactId>eclipselink</artifactId>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt-impl</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt-jackson</artifactId>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -76,12 +88,14 @@
               </execution>
             </executions>
             <configuration>
-              <context>ROOT</context>
-              <libs>
-                <lib>in.kodecamp:apps-tomee-models:${project.version}</lib>
-                <lib>com.h2database:h2:${lib.h2.version}</lib>
-                <lib>org.eclipse.persistence:eclipselink:${lib.eclipselink.version}</lib>
-              </libs>
+              <context>login</context>
+              <!-- <libs> -->
+                <!-- <lib>in.kodecamp:apps-tomee-models:${project.version}</lib> -->
+                <!-- <lib>com.h2database:h2:${lib.h2.version}</lib> -->
+                <!-- <lib>org.eclipse.persistence:eclipselink:${lib.eclipselink.version}</lib> -->
+                <!-- <lib>io.jsonwebtoken:jjwt-impl:${lib.jjwt.version}</lib> -->
+                <!-- <lib>io.jsonwebtoken:jjwt-jackson:${lib.jjwt.version}</lib> -->
+              <!-- </libs> -->
               <!-- <deployOpenEjbApplication>true</deployOpenEjbApplication> -->
               <tomeeClassifier>${tomee.profile}</tomeeClassifier>
               <tomeeHttpPort>${tomee.default.httpport}</tomeeHttpPort>

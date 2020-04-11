@@ -10,6 +10,8 @@ import in.kodecamp.core.entities.BaseEntity;
 
 public class Link extends LinkedHashMap<String, Object> {
 
+  private static final long serialVersionUID = 1L;
+
   public static final String PATH_SEPARATOR = "/";
 
   /* public static final String STUDENTS = PATH_SEPARATOR + "students"; */
@@ -34,7 +36,8 @@ public class Link extends LinkedHashMap<String, Object> {
   }
 
   protected static String getFullyQualifiedContextPath(UriInfo uriInfo) {
-    String fq = uriInfo.getBaseUri().toString();
+    String fq = uriInfo.getBaseUri()
+        .toString();
     if (fq.endsWith("/")) {
       return fq.substring(0, fq.length() - 1);
     }
@@ -43,8 +46,11 @@ public class Link extends LinkedHashMap<String, Object> {
 
   protected String createHref(String fqBasePath, BaseEntity entity) {
     StringBuilder sb = new StringBuilder(fqBasePath);
-    String path = ResourcePath.getPath(entity.getClass().getName());
-    sb.append(path).append(PATH_SEPARATOR).append(entity.getId());
+    String path = ResourcePath.getPath(entity.getClass()
+        .getName());
+    sb.append(path)
+        .append(PATH_SEPARATOR)
+        .append(entity.getId());
     return sb.toString();
   }
 

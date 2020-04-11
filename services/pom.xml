@@ -20,6 +20,7 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <tomee.default.httpport>8080</tomee.default.httpport>
     <tomee.version>8.0.0</tomee.version>
+    <tomee.root>/home/sunil_arc/Projects/java/services/apps.tomee/tomee</tomee.root>
   </properties>
 
 
@@ -28,6 +29,14 @@
     <dependency>
       <groupId>javax</groupId>
       <artifactId>javaee-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.eclipse.microprofile</groupId>
+      <artifactId>microprofile</artifactId>
+      <version>3.0</version>
+      <type>pom</type>
       <scope>provided</scope>
     </dependency>
 
@@ -45,6 +54,7 @@
           <artifactId>lombok</artifactId>
         </exclusion>
       </exclusions>
+
     </dependency>
 
     <!-- <dependency> -->
@@ -62,13 +72,7 @@
       <artifactId>eclipselink</artifactId>
     </dependency>
 
-    <dependency>
-      <groupId>com.auth0</groupId>
-      <artifactId>java-jwt</artifactId>
-    </dependency>
-
   </dependencies>
-
 
   <build>
     <finalName>services</finalName>
@@ -95,14 +99,16 @@
               </execution>
             </executions>
             <configuration>
+              <catalinaBase>${tomee.root}</catalinaBase>
               <context>services</context>
-              <args>-Xmx128m -XX:MaxMetaspaceSize=64m</args>
+              <args>-Xmx256m -XX:MaxMetaspaceSize=128m</args>
               <libs>
                 <lib>in.kodecamp:apps-tomee-core:${project.version}</lib>
                 <lib>org.projectlombok:lombok:${lib.lombok.version}</lib>
                 <!-- <lib>in.kodecamp:apps-tomee-dtos:${project.version}</lib> -->
                 <lib>com.h2database:h2:${lib.h2.version}</lib>
                 <lib>org.eclipse.persistence:eclipselink:${lib.eclipselink.version}</lib>
+                <!-- <lib>org.eclipse.microprofile:microprofile:${lib.eclipselink.version}</lib> -->
               </libs>
               <!-- <deployOpenEjbApplication>true</deployOpenEjbApplication> -->
               <tomeeClassifier>${tomee.profile}</tomeeClassifier>

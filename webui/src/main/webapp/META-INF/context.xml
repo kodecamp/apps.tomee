@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/webui">
-  <Valve className="org.apache.catalina.authenticator.FormAuthenticator" />
+  <Valve className="org.keycloak.adapters.tomcat.KeycloakAuthenticatorValve"/>
+  <!--  <Valve className="org.apache.catalina.authenticator.FormAuthenticator" />
   <Realm className="org.apache.tomee.catalina.realm.LazyRealm" cdi="true"
-    realmClass="in.kodecamp.security.AuthBean" />
+  realmClass="in.kodecamp.security.AuthBean" /> -->
 
-  <!-- <Realm className="org.apache.catalina.realm.DataSourceRealm" dataSourceName="jdbc/cmdDataSource" 
-    userTable="users" userNameCol="user_name" userCredCol="user_pass" userRoleTable="user_roles" 
+  <!-- <Realm className="org.apache.catalina.realm.DataSourceRealm" dataSourceName="jdbc/cmdDataSource"
+    userTable="users" userNameCol="user_name" userCredCol="user_pass" userRoleTable="user_roles"
     roleNameCol="role_name"/> -->
 </Context>

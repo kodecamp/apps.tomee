@@ -20,6 +20,7 @@
     <lib.primefaces.version>7.0</lib.primefaces.version>
     <lib.primefaces.themes.version>1.0.10</lib.primefaces.themes.version>
     <lib.eclipselink.version>2.7.5</lib.eclipselink.version>
+    <lib.jjwt.version>0.10.7</lib.jjwt.version>
     <tomee.version>8.0.0</tomee.version>
     <tomee.profile>microprofile</tomee.profile>
   </properties>
@@ -29,6 +30,7 @@
     <module>models</module>
     <module>core</module>
     <module>services</module>
+    <module>hateoas.services</module>
     <module>login</module>
     <module>webui</module>
     <module>rest-client</module>
@@ -43,6 +45,12 @@
       <layout>default</layout>
     </repository>
 
+        <repository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Maven Repository Group</name>
+            <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+            <layout>default</layout>
+        </repository>
     <!-- lombok repo -->
     <repository>
       <id>projectlombok.org</id>
@@ -150,11 +158,32 @@
         <scope>provided</scope>
       </dependency>
 
-    <dependency>
-      <groupId>com.auth0</groupId>
-      <artifactId>java-jwt</artifactId>
-      <version>3.3.0</version>
-    </dependency>
+      <!-- <dependency> -->
+        <!-- <groupId>com.auth0</groupId> -->
+        <!-- <artifactId>java-jwt</artifactId> -->
+        <!-- <version>3.3.0</version> -->
+      <!-- </dependency> -->
+
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-api</artifactId>
+        <version>${lib.jjwt.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-impl</artifactId>
+        <version>${lib.jjwt.version}</version>
+        <scope>runtime</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-jackson</artifactId>
+        <version>${lib.jjwt.version}</version>
+        <scope>runtime</scope>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 </project>

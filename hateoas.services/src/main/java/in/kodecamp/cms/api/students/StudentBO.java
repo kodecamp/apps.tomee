@@ -7,7 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import in.kodecamp.models.StudentEntity;
+import in.kodecamp.cms.api.students.StudentEntity;
 
 /**
  * StudentBO

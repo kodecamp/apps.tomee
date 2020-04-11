@@ -1,7 +1,4 @@
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <artifactId>apps-tomee-webui</artifactId>
   <parent>
@@ -19,7 +16,52 @@
     <tomee.default.httpport>8080</tomee.default.httpport>
     <tomee.profile>microprofile</tomee.profile>
     <tomee.root>/home/sunil_arc/Projects/java/services/apps.tomee/tomee</tomee.root>
+    <keycloak.version>8.0.1</keycloak.version>
   </properties>
+
+  <repositories>
+    <repository>
+      <id>jboss</id>
+      <name>jboss repo</name>
+      <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+
+    <repository>
+      <id>jboss-releases-repository</id>
+      <name>JBoss Releases Repository</name>
+      <url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/</url>
+    </repository>
+    <repository>
+      <id>JBoss</id>
+      <name>public-jboss</name>
+      <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+    </repository>
+    <repository>
+      <id>java.net-maven2-SNAPSHOT-repository</id>
+      <name>Java.net SNAPSHOT-Repository for Maven</name>
+      <url>https://maven.java.net/content/repositories/snapshots/</url>
+      <layout>default</layout>
+    </repository>
+    <repository>
+      <id>java.net-maven2-repository</id>
+      <name>Java.net Repository for Maven</name>
+      <url>https://maven.java.net/content/repositories/releases/</url>
+      <layout>default</layout>
+    </repository>
+    <repository>
+      <id>oss.sonatype.org</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </repository>
+    <repository>
+      <id>bintray-snapshot</id>
+      <name>libs-snapshot</name>
+      <url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
+    </repository>
+  </repositories>
+
 
   <dependencies>
 
@@ -57,6 +99,58 @@
       <scope>provided</scope>
     </dependency>
 
+    <dependency>
+      <groupId>org.eclipse.microprofile</groupId>
+      <artifactId>microprofile</artifactId>
+      <version>3.0</version>
+      <type>pom</type>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>in.kodecamp</groupId>
+      <artifactId>apps-tomee-core</artifactId>
+      <!-- <exclusions> -->
+      <!-- <exclusion> -->
+      <!-- <groupId>org.projectlombok</groupId> -->
+      <!-- <artifactId>lombok</artifactId> -->
+      <!-- </exclusion> -->
+      <!-- </exclusions> -->
+
+    </dependency>
+    <dependency>
+      <groupId>org.keycloak</groupId>
+      <artifactId>keycloak-core</artifactId>
+      <version>${keycloak.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.keycloak</groupId>
+      <artifactId>keycloak-adapter-core</artifactId>
+      <version>${keycloak.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <!--
+        <dependency>
+        	<groupId>org.keycloak</groupId>
+		<artifactId>keycloak-admin-client</artifactId>
+		<version>${keycloak.version}</version>
+        </dependency>
+        -->
+    <dependency>
+      <groupId>org.keycloak</groupId>
+      <artifactId>keycloak-adapter-spi</artifactId>
+      <version>${keycloak.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5.4</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
   <build>
     <finalName>webui</finalName>
@@ -86,7 +180,7 @@
             <configuration>
               <!-- <context>ROOT</context> -->
               <context>webui</context>
-              <catalinaBase>${tomee.root}</catalinaBase>
+              <!-- <catalinaBase>${tomee.root}</catalinaBase> -->
               <args>-Xmx256m -XX:MaxMetaspaceSize=128m</args>
               <libs>
                 <lib>in.kodecamp:apps-tomee-models:${project.version}</lib>
@@ -95,6 +189,11 @@
                 <lib>com.h2database:h2:${lib.h2.version}</lib>
                 <lib>com.h2database:h2:${lib.h2.version}</lib>
                 <lib>org.eclipse.persistence:eclipselink:${lib.eclipselink.version}</lib>
+                <lib>in.kodecamp:apps-tomee-core:${project.version}</lib>
+                <!--
+                <lib>org.keycloak:keycloak-core:${keycloak.version}</lib>
+                <lib>org.keycloak:keycloak-adaptor-core:${keycloak.version}</lib>
+                -->
               </libs>
               <webResourceCached>false</webResourceCached>
               <tomeeClassifier>${tomee.profile}</tomeeClassifier>

@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Group by: $2"
+command jq '.students|group_by(."$2")|.[]|.[]|join("/")' $1 | dmenu -i -nb '#282828' -l 15 -nf '#fea63c' -sb '#fea63c' -sf '#282828' -fn 'Hack-16:normal:pixelsize=18' -p ' λ : '
+

@@ -1,14 +1,11 @@
 package in.kodecamp.cms.api.students;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import java.security.Principal;
 import java.util.List;
 import java.util.Map;
-
 import javax.annotation.PostConstruct;
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
@@ -23,15 +20,12 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-
-import in.kodecamp.core.resources.Link;
+import org.eclipse.microprofile.jwt.JsonWebToken;
+import in.kodecamp.cms.api.commons.PathConstants;
+import in.kodecamp.core.entities.BaseEntity;
+import in.kodecamp.core.exceptions.UnknownResourceException;
 import in.kodecamp.core.resources.BaseResourceController;
 import in.kodecamp.core.resources.CollectionResource;
-import in.kodecamp.core.exceptions.UnknownResourceException;
-import in.kodecamp.core.entities.BaseEntity;
-
-import in.kodecamp.cms.api.commons.PathConstants;
-import in.kodecamp.cms.api.students.StudentEntity;
 
 /**
  * StudentsResource
@@ -40,6 +34,12 @@ import in.kodecamp.cms.api.students.StudentEntity;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class StudentResourceController extends BaseResourceController<StudentResource> {
+
+  @Inject
+  private JsonWebToken token;
+
+  @Inject
+  private Principal principal;
 
   /**
    * Constructor
@@ -60,18 +60,28 @@ public class StudentResourceController extends BaseResourceController<StudentRes
   }
 
   @GET
-  public CollectionResource list(@Context UriInfo info, @DefaultValue("false") @QueryParam("expand") boolean isExpanded,
-      @DefaultValue("0") @QueryParam("offset") int offset, @DefaultValue("100") @QueryParam("size") int size) {
-
+  @RolesAllowed({"ADMIN", "PRINCIPAL", "TEACHER"})
+  public CollectionResource list(@Context UriInfo info,
+      @DefaultValue("false") @QueryParam("expand") boolean isExpanded,
+      @DefaultValue("0") @QueryParam("offset") int offset,
+      @DefaultValue("100") @QueryParam("size") int size) {
+    System.out.println(
+        "------------------------------------- Security Details -----------------------------------------");
+    System.out.println("Principal " + principal.getName());
+    System.out.println("JsonWebToken : " + this.token);
+    System.out.println(
+        "------------------------------------- Security Details -----------------------------------------");
     System.out.println(this.className + "getAll");
 
     System.out.println("isExpanded : " + isExpanded + ", offset: " + offset + ", size: " + size);
     List<StudentEntity> resultList = studentBo.getAllActive();
-    return super.createCollectionResource(info, PathConstants.PATH_STUDENTS, resultList, isExpanded);
+    return super.createCollectionResource(info, PathConstants.PATH_STUDENTS, resultList,
+        isExpanded);
   }
 
   @GET
   @Path("/{id}")
+  @RolesAllowed({"ADMIN", "PRINCIPAL", "TEACHER", "STUDENT"})
   public StudentResource getBy(@Context UriInfo uriInfo, @PathParam("id") long id) {
     System.out.println(this.className + "getBy(id) -> id : " + id);
     StudentEntity fe = studentBo.getBy(id);
@@ -83,7 +93,8 @@ public class StudentResourceController extends BaseResourceController<StudentRes
 
   @PUT
   @Path("/{id}")
-  public Response update(@Context UriInfo uriInfo, @PathParam("id") long id, final Map fieldValueMap) {
+  public Response update(@Context UriInfo uriInfo, @PathParam("id") long id,
+      final Map fieldValueMap) {
     System.out.println(this.className + "update at id : " + id + " with -> " + fieldValueMap);
     StudentEntity foundEntity = this.studentBo.getBy(id);
 

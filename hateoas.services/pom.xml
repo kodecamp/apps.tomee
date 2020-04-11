@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>in.kodecamp</groupId>
+    <artifactId>apps-tomee</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>apps-tomee-hateoas.services</artifactId>
+
+  <packaging>war</packaging>
+
+  <properties>
+    <failOnMissingWebXml>false</failOnMissingWebXml>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <tomee.default.httpport>8080</tomee.default.httpport>
+    <tomee.version>8.0.0</tomee.version>
+    <version.jackson>2.10.1</version.jackson>
+  </properties>
+
+
+  <dependencies>
+
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.eclipse.microprofile</groupId>
+      <artifactId>microprofile</artifactId>
+      <version>3.0</version>
+      <type>pom</type>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.jaxrs</groupId>
+      <artifactId>jackson-jaxrs-json-provider</artifactId>
+      <version>${version.jackson}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>in.kodecamp</groupId>
+      <artifactId>apps-tomee-core</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.projectlombok</groupId>
+          <artifactId>lombok</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!-- <dependency> -->
+      <!-- <groupId>in.kodecamp</groupId> -->
+      <!-- <artifactId>apps-tomee-dtos</artifactId> -->
+    <!-- </dependency> -->
+
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.eclipse.persistence</groupId>
+      <artifactId>eclipselink</artifactId>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <finalName>services</finalName>
+  </build>
+  <profiles>
+    <profile>
+      <id>tomee</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.tomee.maven</groupId>
+            <artifactId>tomee-maven-plugin</artifactId>
+            <version>${tomee.version}</version>
+            <executions>
+              <execution>
+                <id>executable-jar</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <context>services</context>
+              <args>-Xmx256m -XX:MaxMetaspaceSize=128m</args>
+              <libs>
+                <lib>in.kodecamp:apps-tomee-core:${project.version}</lib>
+                <lib>org.projectlombok:lombok:${lib.lombok.version}</lib>
+                <!-- <lib>in.kodecamp:apps-tomee-dtos:${project.version}</lib> -->
+                <lib>com.h2database:h2:${lib.h2.version}</lib>
+                <lib>org.eclipse.persistence:eclipselink:${lib.eclipselink.version}</lib>
+                <!-- <lib>org.eclipse.microprofile:microprofile:${lib.eclipselink.version}</lib> -->
+              </libs>
+              <!-- <deployOpenEjbApplication>true</deployOpenEjbApplication> -->
+              <tomeeClassifier>${tomee.profile}</tomeeClassifier>
+              <tomeeHttpPort>${tomee.default.httpport}</tomeeHttpPort>
+              <tomeeShutdownPort>8005</tomeeShutdownPort>
+              <tomeeAjpPort>8009</tomeeAjpPort>
+              <synchronization>
+                <extensions>
+                  <extension>.class</extension> <!-- if you want to update each time you build with mvn compile -->
+                </extensions>
+              </synchronization>
+              <systemVariables>
+                <tomee.serialization.class.whitelist />
+                <tomee.serialization.class.blacklist>-</tomee.serialization.class.blacklist>
+                <openejb.system.apps>true</openejb.system.apps>
+                <tomee.remote.support>true</tomee.remote.support>
+              </systemVariables>
+              <reloadOnUpdate>true</reloadOnUpdate>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>

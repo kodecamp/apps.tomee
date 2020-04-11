@@ -14,7 +14,7 @@ public class StudentResource extends Link {
     super(info, entity);
     put("name", entity.getName());
     put("address", entity.getAddress());
-    put("created", entity.getCreatedOn());
+    put("createdOn", entity.getCreatedOn());
     put("modifiedOn", entity.getModifiedOn());
     // put("user", new Link(getFullyQualifiedContextPath(info), todo.getUser()));
   }
