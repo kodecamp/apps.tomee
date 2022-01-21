@@ -16,7 +16,7 @@
     <jee.version>8.0</jee.version>
 
     <lib.lombok.version>1.18.10</lib.lombok.version>
-    <lib.h2.version>1.4.200</lib.h2.version>
+    <lib.h2.version>2.1.210</lib.h2.version>
     <lib.primefaces.version>7.0</lib.primefaces.version>
     <lib.primefaces.themes.version>1.0.10</lib.primefaces.themes.version>
     <lib.eclipselink.version>2.7.5</lib.eclipselink.version>
