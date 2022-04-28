@@ -16,7 +16,7 @@
     <tomee.default.httpport>8080</tomee.default.httpport>
     <tomee.profile>microprofile</tomee.profile>
     <tomee.root>/home/sunil_arc/Projects/java/services/apps.tomee/tomee</tomee.root>
-    <keycloak.version>8.0.1</keycloak.version>
+    <keycloak.version>17.0.1</keycloak.version>
   </properties>
 
   <repositories>
